@@ -37,17 +37,37 @@ export default function Multiform() {
 
     console.log(allFormData)
 
+    const elements = [
+        <CardBegin modifyIndex={modifyIndex}/>, 
+        <DietForm modifyIndex={modifyIndex}/>, 
+        <FoodStyle modifyIndex={modifyIndex}/>,
+        <Allergies modifyIndex={modifyIndex}/>,
+        <HateLove modifyIndex={modifyIndex}/>,
+        <CardEnd modifyIndex={modifyIndex}/> 
+    ]
+
   return (
   <div className="container-multiform">
-      <Indicator />
+      <Indicator formIndex={formIndex}/>
 
-      {formIndex === 1 ? <CardBegin modifyIndex={modifyIndex}/> 
+    {/* Première façon de faire : */}
+      {/* {formIndex === 1 ? <CardBegin modifyIndex={modifyIndex}/> 
       : formIndex === 2 ? <DietForm modifyIndex={modifyIndex}/> 
       : formIndex === 3 ? <FoodStyle modifyIndex={modifyIndex}/>
       : formIndex === 4 ? <Allergies modifyIndex={modifyIndex}/>
       : formIndex === 5 ? <HateLove modifyIndex={modifyIndex}/>
-      : ""  }
+      : formIndex === 6 ? <CardEnd modifyIndex={modifyIndex}/> 
+      : ""} */}
+
+    {/* Seconde façon de faire : */}
+      {elements.map((el, index) => {
+          if((index + 1) === formIndex) {
+              return el
+          }
+      })}
       
   </div>
   )
 }
+
+
