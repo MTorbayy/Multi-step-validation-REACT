@@ -4,6 +4,9 @@ import Indicator from "./Indicator/Indicator"
 import CardBegin from './Infos/CardBegin'
 import CardEnd from './Infos/CardEnd'
 import DietForm from './SubForms/DietForm'
+import FoodStyle from './SubForms/FoodStyle'
+import Allergies from './SubForms/Allergies'
+import HateLove from './SubForms/HateLove'
 
 export default function Multiform() {
 
@@ -23,7 +26,7 @@ export default function Multiform() {
 
             const newData = {...allFormData}
             const firstPropNewData = Object.keys(data)[0]
-            //Ici on récupère la première propriété de l'objet data (dietForm)
+            //Ici on récupère le nom de la première propriété de l'objet data
 
             newData[firstPropNewData] = data[firstPropNewData]
 
@@ -40,7 +43,10 @@ export default function Multiform() {
 
       {formIndex === 1 ? <CardBegin modifyIndex={modifyIndex}/> 
       : formIndex === 2 ? <DietForm modifyIndex={modifyIndex}/> 
-      : ""}
+      : formIndex === 3 ? <FoodStyle modifyIndex={modifyIndex}/>
+      : formIndex === 4 ? <Allergies modifyIndex={modifyIndex}/>
+      : formIndex === 5 ? <HateLove modifyIndex={modifyIndex}/>
+      : ""  }
       
   </div>
   )
